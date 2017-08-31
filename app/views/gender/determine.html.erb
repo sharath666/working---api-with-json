@@ -1,0 +1,16 @@
+<h2> gender </h2>
+<%= form_tag(gender_determine_path, method: :get) %>
+<label>
+	enter the name
+</label>
+
+<%= text_field_tag :name %>
+<%= submit_tag "sub" %>
+
+<% if !@determine.nil? %>
+<p> the gender of  <%=params[:name]  %> is <%= @determine["gender"] %></p>
+<% end %>
+
+
+
+
