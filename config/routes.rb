@@ -1,10 +1,19 @@
 Rails.application.routes.draw do
+
+ 
+
   get 'google/distance'
 
   get 'gender/determine'
 
   get 'weather/search'
   get 'google/address'
+  namespace :api, format: 'json' do 
+     namespace :v1 do 
+       resources :categories
+       resources :products
+  end 
+   end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -12,9 +21,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
    #root 'weather#search'
    resources :gender
-   root 'google#distance'
-   resources :google
-
+      resources :google
+  root 'categories#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
