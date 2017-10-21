@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
  
 
+  get 'dashboard/index'
+
+  devise_for :users
   get 'google/distance'
 
   get 'gender/determine'
@@ -13,7 +16,11 @@ Rails.application.routes.draw do
        resources :categories
        resources :products
   end 
-   end
+  
+  namespace :v2 do
+    resources :tasks
+  end
+end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -22,7 +29,7 @@ Rails.application.routes.draw do
    #root 'weather#search'
    resources :gender
       resources :google
-  root 'categories#index'
+  root 'weather#search'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
